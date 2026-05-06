@@ -5,6 +5,7 @@ dotenv.config()
 
 import express from 'express'
 import { supabase } from './config/supabase'
+import userRoutes from './features/users/user.routes'
 
 const app = express()
 
@@ -36,6 +37,8 @@ app.get('/api/health/db', async (_req, res) => {
     message: 'Database connected successfully',
   })
 })
+
+app.use('/api/users', userRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
