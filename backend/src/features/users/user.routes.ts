@@ -1,8 +1,9 @@
 import { Router } from 'express'
+import { requireAuth } from '../../middleware/auth.middleware'
 import { getMe } from './user.controller'
 
 const router = Router()
 
-router.get('/me', getMe)
+router.get('/me', requireAuth, getMe)
 
 export default router
